@@ -15,6 +15,7 @@ Here's what our HeadLines implementation covers:
 ###5) [CSP](https://developer.mozilla.org/en-US/docs/Security/CSP)
 ###6) [HttpOnly Cookies*](https://www.owasp.org/index.php/HttpOnly)
 ###7) [Secure Cookies*](https://www.owasp.org/index.php/SecureFlag)
+###8) [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 
 * Servlet 3.0 required.
 
@@ -55,7 +56,11 @@ others you'll want a config file.  Here is a complete config which uses the defa
     },
     "cspReportOnly":{}
   },
-
+  
+  "CacheControlConfig": {
+    "enabled": true,
+    "value": "no-cache"
+  }
 }
 ```
 
@@ -64,7 +69,8 @@ This file should be saved into WEB-INF/headlines.conf.
 Most of the options should be self-explanatory.  The hstsConfig->maxAge option is the length in seconds the HSTS directive should be followed.  The spec
 recommends a length of 1 to 2 years.  The defualt is 1 year.  The 'proxyHeader' is currently used only by HSTS.  When behind a reverse proxy which handles SSL,
 the proxy server will often add this header on the request to inform the app server whether HTTP or HTTPS was used.  While 'X-Forwarded-Proto' is the
-defacto-standard (AWS's elastic load balancer does this by default, for example), you can change this is if needed.
+defacto-standard (AWS's elastic load balancer does this by default, for example), you can change this is if needed.  `Cache-Control` can be set to any
+acceptable value; when the default of `no-cache` is used, `Pragma: NO-CACHE` is also set for HTTP 1.0 compatibility.
 
 ####For CSP
 CSP has the bulk of the configuration options.  The following example shows permitted CSP fields:
