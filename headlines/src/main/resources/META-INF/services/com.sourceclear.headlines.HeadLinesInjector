@@ -1,3 +1,4 @@
+com.sourceclear.headlines.impl.CacheControlInjector
 com.sourceclear.headlines.impl.CspInjector
 com.sourceclear.headlines.impl.HstsInjector
 com.sourceclear.headlines.impl.XContentTypeInjector
