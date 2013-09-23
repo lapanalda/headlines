@@ -12,7 +12,7 @@ Here's what our HeadLines implementation covers:
 ###2) [X-Frame-Options](https://tools.ietf.org/html/draft-ietf-websec-x-frame-options-00)
 ###3) [Microsoft's XSS Filter](http://msdn.microsoft.com/en-us/library/dd565647.aspx)
 ###4) [X-Content-Type Options](http://msdn.microsoft.com/en-us/library/ie/gg622941.aspx)
-###5) [CSP](https://developer.mozilla.org/en-US/docs/Security/CSP)
+###5) [CSP - Content Security Policy](https://developer.mozilla.org/en-US/docs/Security/CSP)
 ###6) [HttpOnly Cookies*](https://www.owasp.org/index.php/HttpOnly)
 ###7) [Secure Cookies*](https://www.owasp.org/index.php/SecureFlag)
 ###8) [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
