@@ -16,7 +16,7 @@ public final class AllowAccessFromConfig {
 
     //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    private volatile ImmutableMap<String,ImmutableList<String>> domains;
+    private volatile ImmutableList<String> domains;
 
     private volatile boolean secure;
 
@@ -26,11 +26,11 @@ public final class AllowAccessFromConfig {
 
     }
 
-    public AllowAccessFromConfig(ImmutableMap<String, ImmutableList<String>> domains) {
+    public AllowAccessFromConfig(ImmutableList<String> domains) {
         this.domains = domains;
     }
 
-    public AllowAccessFromConfig(ImmutableMap<String, ImmutableList<String>> domains, boolean secure) {
+    public AllowAccessFromConfig(ImmutableList<String> domains, boolean secure) {
         this.domains = domains;
         this.secure = secure;
     }
@@ -51,7 +51,7 @@ public final class AllowAccessFromConfig {
         return secure;
     }
 
-    public ImmutableMap<String, ImmutableList<String>> getDomains() {
+    public ImmutableList<String> getDomains() {
         return domains;
     }
 }

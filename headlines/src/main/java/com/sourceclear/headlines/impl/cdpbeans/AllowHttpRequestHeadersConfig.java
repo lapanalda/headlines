@@ -16,28 +16,15 @@ public final class AllowHttpRequestHeadersConfig {
 
     //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    private volatile ImmutableMap<String,ImmutableList<String>> domains;
+    private volatile ImmutableList<String> domains;
 
-    private volatile ImmutableMap<String,ImmutableList<String>> headers;
+    private volatile ImmutableList<String> headers;
 
     private volatile boolean secure;
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    public AllowHttpRequestHeadersConfig() {
 
-    }
-
-    public AllowHttpRequestHeadersConfig(ImmutableMap<String, ImmutableList<String>> domains, ImmutableMap<String, ImmutableList<String>> headers) {
-        this.domains = domains;
-        this.headers = headers;
-    }
-
-    public AllowHttpRequestHeadersConfig(ImmutableMap<String, ImmutableList<String>> domains, ImmutableMap<String, ImmutableList<String>> headers, boolean secure) {
-        this.domains = domains;
-        this.headers = headers;
-        this.secure = secure;
-    }
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -51,15 +38,28 @@ public final class AllowHttpRequestHeadersConfig {
 
     //---------------------------- Property Methods -----------------------------
 
-    public ImmutableMap<String, ImmutableList<String>> getDomains() {
-        return domains;
-    }
-
-    public ImmutableMap<String, ImmutableList<String>> getHeaders() {
-        return headers;
-    }
 
     public boolean isSecure() {
         return secure;
+    }
+
+    public void setSecure(boolean secure) {
+        this.secure = secure;
+    }
+
+    public ImmutableList<String> getHeaders() {
+        return headers;
+    }
+
+    public void setHeaders(ImmutableList<String> headers) {
+        this.headers = headers;
+    }
+
+    public ImmutableList<String> getDomains() {
+        return domains;
+    }
+
+    public void setDomains(ImmutableList<String> domains) {
+        this.domains = domains;
     }
 }

@@ -23,7 +23,6 @@ public final class AcaoInjector extends AbstractHeaderLinesInjector<AcaoConfig> 
 
     //------------------------ Implements: HttpInjector
 
-    @Override
     public void inject(HttpServletRequest request, HttpServletResponse response) {
         AcaoConfig config = getConfig();
         if (config.isEnabled() && config.getOrigin() != null) {

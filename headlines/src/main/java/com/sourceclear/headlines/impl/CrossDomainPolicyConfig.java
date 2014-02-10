@@ -28,34 +28,12 @@ public final class CrossDomainPolicyConfig {
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    public CrossDomainPolicyConfig(SiteControlConfig siteControl) {
-        this.siteControl = siteControl;
-    }
-
-    public CrossDomainPolicyConfig(AllowAccessFromConfig allowAccessFrom) {
-        this.allowAccessFrom = allowAccessFrom;
-    }
-
-    public CrossDomainPolicyConfig(AllowHttpRequestHeadersConfig allowHttpRequestHeadersFrom) {
-        this.allowHttpRequestHeadersFrom = allowHttpRequestHeadersFrom;
-    }
-
     /**
      * Create a default CrossDomainPolicyConfig (meta domain policy) instance. This instance has different parameters: site-control, allow-access-from, allow-http-request-headers-from.
      */
 
 
-    public CrossDomainPolicyConfig() {
-        this(new SiteControlConfig(),
-                new AllowAccessFromConfig(ImmutableMap.of("domain", ImmutableList.of("'*'")), false),
-                new AllowHttpRequestHeadersConfig(ImmutableMap.of("domain", ImmutableList.of("'*'")), ImmutableMap.of("headers", ImmutableList.of("'*'")), false));
-    }
 
-    public CrossDomainPolicyConfig(SiteControlConfig siteControl, AllowAccessFromConfig allowAccessFrom, AllowHttpRequestHeadersConfig allowHttpRequestHeadersFrom) {
-        this.siteControl = siteControl;
-        this.allowAccessFrom = allowAccessFrom;
-        this.allowHttpRequestHeadersFrom = allowHttpRequestHeadersFrom;
-    }
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

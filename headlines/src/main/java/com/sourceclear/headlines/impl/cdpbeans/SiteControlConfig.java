@@ -16,19 +16,13 @@ public final class SiteControlConfig {
 
     //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    private volatile ImmutableMap<String,ImmutableList<String>> permittedPolicies;
+    private volatile ImmutableList<String> permittedPolicies;
 
     private volatile boolean enabled = true;
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    public SiteControlConfig() {
-       this(ImmutableMap.of("permitted-cross-domain-policies", ImmutableList.of("'master-only'")));
-    }
 
-    public SiteControlConfig(ImmutableMap<String, ImmutableList<String>> permittedPolicies) {
-        this.permittedPolicies = permittedPolicies;
-    }
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -42,11 +36,20 @@ public final class SiteControlConfig {
 
     //---------------------------- Property Methods -----------------------------
 
-    public ImmutableMap<String, ImmutableList<String>> getPermittedPolicies() {
+
+    public ImmutableList<String> getPermittedPolicies() {
         return permittedPolicies;
+    }
+
+    public void setPermittedPolicies(ImmutableList<String> permittedPolicies) {
+        this.permittedPolicies = permittedPolicies;
     }
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

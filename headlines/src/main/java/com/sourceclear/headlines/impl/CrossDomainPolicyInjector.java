@@ -21,7 +21,6 @@ public final class CrossDomainPolicyInjector extends AbstractHeaderLinesInjector
      * @param request
      * @param response
      */
-    @Override
     public void inject(HttpServletRequest request, HttpServletResponse response) {
         CrossDomainPolicyConfig config = getConfig();
 
