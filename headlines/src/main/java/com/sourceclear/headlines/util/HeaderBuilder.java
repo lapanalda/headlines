@@ -1,4 +1,4 @@
-package com.sourceclear.headlines.impl.util;
+package com.sourceclear.headlines.util;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -9,7 +9,7 @@ public class HeaderBuilder {
 
     }
 
-    public static String formatDirectives(ImmutableMap<String,ImmutableList<String>> directives, String elementSplitter, String directiveSplitter) {
+    public static String formatDirectives(ImmutableMap<String, ImmutableList<String>> directives) {
 
         // In the case of an empty map return the empty string:
         if (directives.isEmpty()) {
@@ -29,49 +29,48 @@ public class HeaderBuilder {
             StringBuilder elements = new StringBuilder();
 
             // Inner loop = for each directive build up the element String
-            for (String element: directives.get(directive)) {
-                elements.append(elementSplitter).append(element).append(" ");
+            for (String element : directives.get(directive)) {
+                elements.append(element).append(" ");
             }
 
             if (sb.length() > 0) {
                 sb.append("; ");
             }
 
-            sb.append(directive).append(directiveSplitter).append(elements.append(" ").toString());
+            sb.append(directive).append(" ").append(elements.append(" ").toString());
         }
 
         return sb.toString().trim();
     }
 
-    public static String formatDirectives(ImmutableList<String> directives, String elementSplitter, String directiveSplitter) {
+    /**
+     * @param values - list of String attribute values
+     * @return formatted values
+     */
+    public static String formatListAttributeValues(ImmutableList<String> values) {
 
         // In the case of an empty map return the empty string:
-        if (directives.isEmpty()) {
+        if (values.isEmpty()) {
             return "";
         }
 
         StringBuilder sb = new StringBuilder();
 
         // Outer loop - loop through each directive
-        for (String directive : directives) {
+        for (int i = 0; i < values.size(); i++) {
 
             // Don't add a directive if it has zero elements
-            if (directives.size() == 0) {
+            if (values.size() == 0) {
                 continue;
             }
 
-            StringBuilder elements = new StringBuilder();
+            //adding value of header attributes
+            sb.append("'").append(values.get(i)).append("'");
 
-            // Inner loop = for each directive build up the element String
-            for (String element: directives) {
-                elements.append(elementSplitter).append(element).append(" ");
+            // adding comma if list value isn't last
+            if (values.size() > 1 && i < values.size() - 1) {
+                sb.append(",");
             }
-
-            if (sb.length() > 0) {
-                sb.append("; ");
-            }
-
-            sb.append(directive).append(directiveSplitter).append(elements.append(" ").toString());
         }
 
         return sb.toString().trim();

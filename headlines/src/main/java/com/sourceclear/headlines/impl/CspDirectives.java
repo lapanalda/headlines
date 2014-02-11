@@ -16,7 +16,7 @@
 
 package com.sourceclear.headlines.impl;
 
-import com.sourceclear.headlines.impl.util.HeaderBuilder;
+import com.sourceclear.headlines.util.HeaderBuilder;
 
 import javax.annotation.concurrent.Immutable;
 
@@ -45,8 +45,8 @@ public final class CspDirectives {
   /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
   private CspDirectives(CspConfig config) {
-    directivesCache = HeaderBuilder.formatDirectives(config.getCspMap(), "", " ");
-    reportDirectivesCache = HeaderBuilder.formatDirectives(config.getCspReportOnlyMap(), "", " ");
+    directivesCache = HeaderBuilder.formatDirectives(config.getCspMap());
+    reportDirectivesCache = HeaderBuilder.formatDirectives(config.getCspReportOnlyMap());
   }
 
   ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\

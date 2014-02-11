@@ -1,10 +1,15 @@
 package com.sourceclear.headlines.impl.cdpbeans;
 
 import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
+import com.google.gson.annotations.SerializedName;
 
 import javax.annotation.concurrent.Immutable;
 
+/**
+ * Defines the meta-policy for the current domain. A meta-policy specifies acceptable
+ * domain policy files other than the master policy file located in the target domain's root and named
+ * crossdomain.xml.  (from Cross-domain Policy File Specification)
+ */
 @Immutable
 public final class SiteControlConfig {
 
@@ -16,12 +21,12 @@ public final class SiteControlConfig {
 
     //////////////////////////////// Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    private volatile ImmutableList<String> permittedPolicies;
+    @SerializedName("permitted-cross-domain-policies")
+    private volatile ImmutableList<String> permittedCrossDomainPolicies;
 
     private volatile boolean enabled = true;
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
 
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -36,13 +41,16 @@ public final class SiteControlConfig {
 
     //---------------------------- Property Methods -----------------------------
 
-
-    public ImmutableList<String> getPermittedPolicies() {
-        return permittedPolicies;
+    /**
+     *
+     * @return specified the meta-policy
+     */
+    public ImmutableList<String> getPermittedCrossDomainPolicies() {
+        return permittedCrossDomainPolicies;
     }
 
-    public void setPermittedPolicies(ImmutableList<String> permittedPolicies) {
-        this.permittedPolicies = permittedPolicies;
+    public void setPermittedCrossDomainPolicies(ImmutableList<String> permittedCrossDomainPolicies) {
+        this.permittedCrossDomainPolicies = permittedCrossDomainPolicies;
     }
 
     public boolean isEnabled() {
@@ -52,4 +60,5 @@ public final class SiteControlConfig {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
 }
