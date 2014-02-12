@@ -7,3 +7,4 @@ com.sourceclear.headlines.impl.AcaoInjector
 com.sourceclear.headlines.impl.CrossDomainPolicyInjector
 com.sourceclear.headlines.impl.ServerInformationInjector
 com.sourceclear.headlines.impl.XPoweredByInjector
+com.sourceclear.headlines.impl.ContentTypeInjector

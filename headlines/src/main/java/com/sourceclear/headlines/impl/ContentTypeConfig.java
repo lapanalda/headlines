@@ -1,11 +1,9 @@
 package com.sourceclear.headlines.impl;
 
-import com.google.gson.annotations.SerializedName;
-
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
-public final class XPoweredByConfig {
+public final class ContentTypeConfig {
 
     ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -15,8 +13,9 @@ public final class XPoweredByConfig {
 
     private volatile boolean enabled = true;
 
-    @SerializedName("x-powered-by")
-    private volatile String xPoweredBy;
+    private volatile String type;
+
+    private volatile String charset;
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -40,11 +39,25 @@ public final class XPoweredByConfig {
         this.enabled = enabled;
     }
 
-    public String getXPoweredBy() {
-        return xPoweredBy;
+    /**
+     * @return type of content
+     */
+    public String getType() {
+        return type;
     }
 
-    public void setXPoweredBy(String xPoweredBy) {
-        this.xPoweredBy = xPoweredBy;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @return encoding of page
+     */
+    public String getCharset() {
+        return charset;
+    }
+
+    public void setCharset(String charset) {
+        this.charset = charset;
     }
 }

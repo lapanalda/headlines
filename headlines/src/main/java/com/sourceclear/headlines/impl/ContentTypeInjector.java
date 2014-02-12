@@ -5,7 +5,7 @@ import com.sourceclear.headlines.AbstractHeaderLinesInjector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public final class XPoweredByInjector extends AbstractHeaderLinesInjector<XPoweredByConfig> {
+public final class ContentTypeInjector extends AbstractHeaderLinesInjector<ContentTypeConfig> {
 
     ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -15,8 +15,8 @@ public final class XPoweredByInjector extends AbstractHeaderLinesInjector<XPower
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    public XPoweredByInjector() {
-        super.setConfig(new XPoweredByConfig());
+    public ContentTypeInjector() {
+        setConfig(new ContentTypeConfig());
     }
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -24,9 +24,11 @@ public final class XPoweredByInjector extends AbstractHeaderLinesInjector<XPower
     //------------------------ Implements: HttpInjector
 
     public void inject(HttpServletRequest request, HttpServletResponse response) {
-        XPoweredByConfig config = getConfig();
-        if (config.isEnabled() && config.getXPoweredBy() != null) {
-            response.setHeader("X-Powered-By", config.getXPoweredBy());
+        ContentTypeConfig config = getConfig();
+
+        if (config.isEnabled() && config.getCharset() != null) {
+            String headerValue = String.format("%s; charset=%s",config.getType(), config.getCharset());
+            response.setHeader("Content-Type", headerValue);
         }
     }
 

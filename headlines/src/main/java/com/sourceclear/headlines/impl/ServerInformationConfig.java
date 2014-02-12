@@ -3,7 +3,7 @@ package com.sourceclear.headlines.impl;
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
-public class ServerInformationConfig {
+public final class ServerInformationConfig {
 
     ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

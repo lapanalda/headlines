@@ -10,7 +10,7 @@ import javax.annotation.concurrent.Immutable;
  * where the party is identified by certificate. (from Cross-domain Policy File Specification)
  */
 @Immutable
-public class AllowAccessFromIdentityConfig {
+public final class AllowAccessFromIdentityConfig {
 
     ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

@@ -5,7 +5,7 @@ import com.sourceclear.headlines.AbstractHeaderLinesInjector;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ServerInformationInjector extends AbstractHeaderLinesInjector<ServerInformationConfig> {
+public final class ServerInformationInjector extends AbstractHeaderLinesInjector<ServerInformationConfig> {
 
     ///////////////////////////// Class Attributes \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
