@@ -89,7 +89,7 @@ others you'll want a config file.  Here is a complete config which uses the defa
       "headers": ["*"],
       "secure": true
     }
-  }
+  },
 
   "ServerInformationConfig": {
     "server": "nginx/1.2.1"
