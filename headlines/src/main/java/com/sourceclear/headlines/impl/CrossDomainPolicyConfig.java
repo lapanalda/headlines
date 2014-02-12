@@ -1,6 +1,7 @@
 package com.sourceclear.headlines.impl;
 
 import com.sourceclear.headlines.impl.cdpbeans.AllowAccessFromConfig;
+import com.sourceclear.headlines.impl.cdpbeans.AllowAccessFromIdentityConfig;
 import com.sourceclear.headlines.impl.cdpbeans.AllowHttpRequestHeadersConfig;
 import com.sourceclear.headlines.impl.cdpbeans.SiteControlConfig;
 
@@ -20,25 +21,13 @@ public final class CrossDomainPolicyConfig {
 
     private volatile AllowAccessFromConfig allowAccessFrom;
 
+    private volatile AllowAccessFromIdentityConfig accessFromIdentity;
+
     private volatile AllowHttpRequestHeadersConfig allowHttpRequestHeadersFrom;
 
     private volatile boolean enabled = true;
 
     /////////////////////////////// Constructors \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-    /**
-     * Create a default CrossDomainPolicyConfig (meta domain policy) instance. This instance has different parameters: site-control, allow-access-from, allow-http-request-headers-from.
-     */
-
-    public CrossDomainPolicyConfig() {
-        this(new SiteControlConfig(), new AllowAccessFromConfig(), new AllowHttpRequestHeadersConfig());
-    }
-
-    public CrossDomainPolicyConfig(SiteControlConfig siteControl, AllowAccessFromConfig allowAccessFrom, AllowHttpRequestHeadersConfig allowHttpRequestHeadersFrom) {
-        this.siteControl = siteControl;
-        this.allowAccessFrom = allowAccessFrom;
-        this.allowHttpRequestHeadersFrom = allowHttpRequestHeadersFrom;
-    }
 
     ////////////////////////////////// Methods \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -67,6 +56,14 @@ public final class CrossDomainPolicyConfig {
 
     public void setAllowAccessFrom(AllowAccessFromConfig allowAccessFrom) {
         this.allowAccessFrom = allowAccessFrom;
+    }
+
+    public AllowAccessFromIdentityConfig getAccessFromIdentity() {
+        return accessFromIdentity;
+    }
+
+    public void setAccessFromIdentity(AllowAccessFromIdentityConfig accessFromIdentity) {
+        this.accessFromIdentity = accessFromIdentity;
     }
 
     public AllowHttpRequestHeadersConfig getAllowHttpRequestHeadersFrom() {

@@ -2,6 +2,7 @@ package com.sourceclear.headlines.impl;
 
 import com.sourceclear.headlines.AbstractHeaderLinesInjector;
 import com.sourceclear.headlines.impl.cdpbeans.AllowAccessFromConfig;
+import com.sourceclear.headlines.impl.cdpbeans.AllowAccessFromIdentityConfig;
 import com.sourceclear.headlines.impl.cdpbeans.AllowHttpRequestHeadersConfig;
 import com.sourceclear.headlines.impl.cdpbeans.SiteControlConfig;
 import com.sourceclear.headlines.util.HeaderBuilder;
@@ -44,6 +45,17 @@ public final class CrossDomainPolicyInjector extends AbstractHeaderLinesInjector
                     value = String.format("%s to-ports=%s", value, toPorts);
                 }
                 value = String.format("%s secure=%s;", value, accessDomainsConfig.isSecure());
+            }
+
+            //Setting allow-access-from-identity if if enable
+            AllowAccessFromIdentityConfig allowAccessFromIdentity = config.getAccessFromIdentity();
+            if (allowAccessFromIdentity != null && allowAccessFromIdentity.isEnabled() && allowAccessFromIdentity.getFingerprintAlgorithm() != null) {
+                value = String.format("%s %s fingerprint-algorithm='%s'", value, AllowAccessFromIdentityConfig.HEADER_NAME, allowAccessFromIdentity.getFingerprintAlgorithm());
+                if (allowAccessFromIdentity.getFingerprint() != null) {
+                    value = String.format("%s fingerprint='%s';", value, allowAccessFromIdentity.getFingerprint());
+                } else {
+                    value = String.format("%s;", value);
+                }
             }
 
             //Setting allow-http-request-headers attribute if it enable
