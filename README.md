@@ -16,6 +16,11 @@ Here's what our HeadLines implementation covers:
 ###6) [HttpOnly Cookies*](https://www.owasp.org/index.php/HttpOnly)
 ###7) [Secure Cookies*](https://www.owasp.org/index.php/SecureFlag)
 ###8) [Cache-Control](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+###9) [Access Control Allow Origin](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+###10) [Cross Domain Meta Policy](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)
+###11) [Server Information](https://securityheaders.com/server-information.php)
+###12) [X-Powered-By](https://securityheaders.com/x-powered-by.php)
+###13) [Content-Type](http://www.w3.org/International/O-charset)
 
 * Servlet 3.0 required.
 
@@ -60,6 +65,44 @@ others you'll want a config file.  Here is a complete config which uses the defa
   "CacheControlConfig": {
     "enabled": true,
     "value": "no-cache"
+  },
+
+  "AcaoConfig": {
+    "origin": "http://localhost http://google.com.ua"
+   },
+
+  "CrossDomainPolicyConfig": {
+    "enabled": true,
+    "siteControl": {
+      "permitted-cross-domain-policies": ["master-only"]
+    },
+    "allowAccessFrom": {
+      "domain": ["*"],
+      "to-ports": ["8080", "9000"],
+      "secure": false
+    },
+    "accessFromIdentity": {
+      "fingerprint-algorithm": "sha-1",
+      "fingerprint": "0DFA8998CEA9E8940DE984569DF49343EBB9FD4A"
+    },
+    "allowHttpRequestHeadersFrom": {
+      "domain": ["*"],
+      "headers": ["*"],
+      "secure": true
+    }
+  },
+
+  "ServerInformationConfig": {
+    "server": "nginx/1.2.1"
+  },
+
+  "XPoweredByConfig": {
+    "x-powered-by": "PHP/5.2.13"
+  },
+
+  "ContentTypeConfig": {
+    "type": "text/html",
+    "charset": "UTF-16"
   }
 }
 ```
